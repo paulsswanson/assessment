@@ -33,7 +33,8 @@ class Sales extends \yii\db\ActiveRecord
     {
         return [
             [['fkstore_id', 'fkfruit_id', 'quantity'], 'integer'],
-            [['date'], 'safe']
+            [['date'], 'safe'],
+            [['discount'], 'safe']
         ];
     }
 
@@ -47,6 +48,7 @@ class Sales extends \yii\db\ActiveRecord
             'fkstore_id' => 'Fkstore ID',
             'fkfruit_id' => 'Fkfruit ID',
             'quantity' => 'Quantity',
+            'discount' => 'Discount',
             'date' => 'Date',
         ];
     }
