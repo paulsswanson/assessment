@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <?= GridView:widget([
+    <?= GridView::widget([
         'dataProvider' => $sales,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -54,10 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'cost',
                 'value' => function ($model) { return '$' . $model->fruit->cost; },
             ],
+            [
+                'attribute' => 'discount',
+				'value' => function ($model) { return $model->discount; },
+            ],
             'quantity',
             [
                 'attribute' => 'total',
-                'value' => function ($model) { return '$' . number_format($model->fruit->cost * $model->quantity, 2); },
+                'value' => function ($model) { return '$' . number_format(($model->fruit->cost - $model->discount) * $model->quantity, 2); },
             ],
             [
                 'attribute' => 'date',
